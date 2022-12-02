@@ -14,6 +14,7 @@ class C(BaseConstants):
     NAME_IN_URL = 'risk_BDM_main_game'
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 5
+    # NUM_ROUNDS = 42
     win_payoff = cu(10)
     import csv
     with open('outcome.csv', 'r') as draw:

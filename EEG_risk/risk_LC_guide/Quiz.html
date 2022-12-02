@@ -1,0 +1,163 @@
+{{ block title }}
+    講解後測驗
+{{ endblock }}
+
+
+{{ block content }}
+<p> <span style="color: red;" id="demo"></span></p>
+
+<link rel="stylesheet" href="{{ static 'CSS/Quizstyle.css' }}">
+
+<p>
+    以下將會包含五個問題，你有理解規則<br>
+    <span style="color: red;font-weight:bold; font-size: 24px"> 你將需要通過這些問題方能繼續實驗。 </span>
+</p>
+
+<a href="javascript:" class="rule" onclick="document.all.fullContent.style.display=(document.all.fullContent.style.display=='none')?'':'none';document.all.smallContent.style.display=(document.all.smallContent.style.display=='none')?'':'none'">
+    <span style="font-size: 18px">規則</span></a>
+
+<div class="block" id="fullContent" style="display:none;">
+    <div id="voting" style="width:100%;height:150px; float:left; border:3px double; padding: 5px; margin-bottom: 20px;">
+    <p>
+        看你需不需要，不用就刪掉。
+    </p>
+    <p>
+        看你需不需要，不用就刪掉。
+    </p>
+    </div>
+</div>
+
+<div class="card bg-light m-3">
+    <div class="card-header">
+        <p>
+            問題一:
+        </p>
+        <!-- <img src="{{ static 'nim_q1.png' }}" width="500" class="center"/> -->
+        <p style="margin-top: 10px">
+            （上面的圖片你要用的話可以註解回來）你可以
+        </p>
+        
+    </div>
+    <div class="card-body">
+        <div><input type="radio" name="quiz_1" value="1" id="1">
+            <label style="font-size: 18px;">A. 造一艘火箭</label></div>
+        <div><input type="radio" name="quiz_1" value="2" id="2">
+            <label style="font-size: 18px;">B. 跟木乃伊決鬥</label></div>
+        <div><input type="radio" name="quiz_1" value="3" id="3">
+            <label style="font-size: 18px;">C. 攀登艾菲爾鐵塔</label></div>
+        <div><input type="radio" name="quiz_o1" value="4" id="4">
+            <label style="font-size: 18px;">D. 挖掘不存在的某樣東西</label></div>
+        {{ formfield_errors 'quiz_1' }}
+    </div>
+</div>
+
+<div class="card bg-light m-3">
+    <div class="card-header">
+        <p>
+            問題二:
+        </p>
+        <!-- <img src="{{ static 'nim_q2.png' }}" width="500" class="center"/> -->
+        <p style="margin-top: 10px">
+            (飛哥:嘿)
+        </p>
+    </div>
+    <div class="card-body">
+        <div><input type="radio" name="quiz_2" value="1" id="1">
+            <label style="font-size: 18px;">A. 幫猴子洗熱水澡</label></div>
+        <div><input type="radio" name="quiz_2" value="2" id="2">
+            <label style="font-size: 18px;">B. 海邊衝浪去</label></div>
+        <div><input type="radio" name="quiz_2" value="3" id="3">
+            <label style="font-size: 18px;">C. 發明奈米機器</label></div>
+        <div><input type="radio" name="quiz_2" value="4" id="4">
+            <label style="font-size: 18px;">D. 找科學怪人的大腦</label></div>
+        {{ formfield_errors 'quiz_2' }}
+    </div>
+</div>
+
+
+
+<div class="card bg-light m-3">
+    <div class="card-header">
+        <p>
+            問題三:
+        </p>
+        <!-- <img src="{{ static 'nim_q2.png' }}" width="500" class="center"/> -->
+        <p style="margin-top: 10px">
+            (飛哥:嘿)
+        </p>
+    </div>
+    <div class="card-body">
+        <div><input type="radio" name="quiz_3" value="1" id="1">
+            <label style="font-size: 18px;">A. 幫猴子洗熱水澡</label></div>
+        <div><input type="radio" name="quiz_3" value="2" id="2">
+            <label style="font-size: 18px;">B. 海邊衝浪去</label></div>
+        <div><input type="radio" name="quiz_3" value="3" id="3">
+            <label style="font-size: 18px;">C. 發明奈米機器</label></div>
+        <div><input type="radio" name="quiz_3" value="4" id="4">
+            <label style="font-size: 18px;">D. 找科學怪人的大腦</label></div>
+        {{ formfield_errors 'quiz_3' }}
+    </div>
+</div>
+
+<div class="card bg-light m-3">
+    <div class="card-header">
+        <p>
+            問題四:
+        </p>
+        <!-- <img src="{{ static 'nim_q2.png' }}" width="500" class="center"/> -->
+        <p style="margin-top: 10px">
+            (飛哥:嘿)
+        </p>
+    </div>
+    <div class="card-body">
+        <div><input type="radio" name="quiz_4" value="1" id="1">
+            <label style="font-size: 18px;">A. 幫猴子洗熱水澡</label></div>
+        <div><input type="radio" name="quiz_4" value="2" id="2">
+            <label style="font-size: 18px;">B. 海邊衝浪去</label></div>
+        <div><input type="radio" name="quiz_4" value="3" id="3">
+            <label style="font-size: 18px;">C. 發明奈米機器</label></div>
+        <div><input type="radio" name="quiz_4" value="4" id="4">
+            <label style="font-size: 18px;">D. 找科學怪人的大腦</label></div>
+        {{ formfield_errors 'quiz_4' }}
+    </div>
+</div>
+
+
+<div class="card bg-light m-3">
+    <div class="card-header">
+        <p>
+            問題五:
+        </p>
+        <!-- <img src="{{ static 'nim_q2.png' }}" width="500" class="center"/> -->
+        <p style="margin-top: 10px">
+            (飛哥:嘿)
+        </p>
+    </div>
+    <div class="card-body">
+        <div><input type="radio" name="quiz_5" value="1" id="1">
+            <label style="font-size: 18px;">A. 幫猴子洗熱水澡</label></div>
+        <div><input type="radio" name="quiz_5" value="2" id="2">
+            <label style="font-size: 18px;">B. 海邊衝浪去</label></div>
+        <div><input type="radio" name="quiz_5" value="3" id="3">
+            <label style="font-size: 18px;">C. 發明奈米機器</label></div>
+        <div><input type="radio" name="quiz_5" value="4" id="4">
+            <label style="font-size: 18px;">D. 找科學怪人的大腦</label></div>
+        {{ formfield_errors 'quiz_5' }}
+    </div>
+</div>
+    {{ next_button }}
+
+<script type="text/javascript">
+
+    window.onbeforeunload = function(e){
+        document.getElementById("demo").innerHTML = "You will lose your payment if you close or unload the browser during experiment.";
+        return 'Are you sure you want to leave?';
+        };
+
+        $('form').submit(function () {
+        window.onbeforeunload = null;
+        });
+</script>
+
+
+{{ endblock }}

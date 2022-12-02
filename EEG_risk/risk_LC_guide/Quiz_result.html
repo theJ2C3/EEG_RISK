@@ -1,0 +1,30 @@
+{{ block title }}
+    Quiz
+{{ endblock }}
+
+
+{{ block content }}
+<style>
+    p {font-size: 18px;}
+</style>
+
+
+
+<div class="card bg-light m-3">
+    <div class="card-body">
+        
+        <p>
+            {{ if player.Pass }}
+                你通過了測試，接下來進入試玩環節。
+            <br> <span style="color: red;font-weight:bold; font-size: 20px"> 請注意，如果你在實驗中關閉頁面抑或是刷新頁面，你將會失去所有報酬。</span> </br>
+            {{ else }}
+                你沒有通過測試。
+            {{ endif }}
+        </p> 
+    </div>
+</div>
+
+
+{{ next_button }}
+
+{{ endblock }}

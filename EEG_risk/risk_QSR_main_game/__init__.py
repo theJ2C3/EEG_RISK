@@ -14,6 +14,7 @@ class C(BaseConstants):
     NAME_IN_URL = 'risk_QSR_main_game'
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 5
+    # NUM_ROUNDS = 42
     win_payoff = cu(10)
     import csv
     with open('table.csv', 'r') as para:

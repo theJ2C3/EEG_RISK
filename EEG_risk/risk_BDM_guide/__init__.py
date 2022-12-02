@@ -28,6 +28,12 @@ class Subsession(BaseSubsession):
 class Group(BaseGroup):
     pass
 
+def make_field():
+    return models.IntegerField(
+        blank=True,
+        choices=[1,2,3,4],
+        widget=widgets.RadioSelect,
+    )
 
 class Player(BasePlayer):
     is_random = models.BooleanField(initial=False)
@@ -42,10 +48,19 @@ class Player(BasePlayer):
     is_red_str = models.StringField()
     number = models.IntegerField(initial=1)
     lottery = models.IntegerField(initial=1)
-
+    # quiz answer
+    quiz_1=make_field()
+    quiz_2=make_field()
+    quiz_3=make_field()
+    quiz_4=make_field()
+    quiz_5=make_field()
+    Pass = models.BooleanField(initial=False)
 
 
 # PAGES
+class Intro(Page):
+    pass
+
 class Instruction(Page):
     pass
 
@@ -124,8 +139,35 @@ class BDM(Page):
                 player.temp_payoff = 0
 
 
+class Quiz(Page):
+    form_model = 'player'
+    form_fields = ['quiz_1', 'quiz_2', 'quiz_3', 'quiz_4', 'quiz_5']
+
+    @staticmethod
+    def error_message(player, values):
+        for q in ['quiz_1', 'quiz_2', 'quiz_3', 'quiz_4', 'quiz_5']:
+            if values[q] == None:
+                return 'Please answer all the questions'
+    def before_next_page(player, timeout_happened):
+        if player.quiz_1 == 3 and player.quiz_2 == 3 and player.quiz_3 == 3 and player.quiz_4 == 3 and player.quiz_5 == 3:
+            player.Pass = True
+    # 這裡寫答案！！！！！
+
+class Quiz_result(Page):
+    @staticmethod
+    def app_after_this_page(player, upcoming_apps):
+        # print(player.session.config['name'])
+        if player.session.config['name'] == "risk_BDM_whole_game":
+            if player.Pass == False:
+                participant= player.participant
+                participant.final_payoff = -1
+                return upcoming_apps[1]
+
+    pass
 class Results(Page):
     pass
 
 
-page_sequence = [Instruction, Instruction2, Instruction3, Instruction_BDM, Instruction_BDM2,Instruction_BDM3, Instruction_BDM5, PracticeStart, Draw, BDM, Results]
+# page_sequence = [Intro, Instruction, Instruction2, Instruction3, Instruction_BDM, Instruction_BDM2,Instruction_BDM3, Instruction_BDM5, PracticeStart, Draw, BDM, Results]
+# page_sequence = [Quiz, Quiz_result, Intro, Instruction, Instruction2, Instruction3, Instruction_BDM, Instruction_BDM2,Instruction_BDM3, Instruction_BDM5, PracticeStart, Draw, BDM, Results]
+page_sequence = [Intro, Instruction, Instruction2, Instruction3, Instruction_BDM, Instruction_BDM2,Instruction_BDM3, Instruction_BDM5, Quiz, Quiz_result, PracticeStart, Draw, BDM, Results]

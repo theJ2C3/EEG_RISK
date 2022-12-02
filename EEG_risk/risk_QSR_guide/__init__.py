@@ -32,6 +32,13 @@ class Group(BaseGroup):
     pass
 
 
+def make_field():
+    return models.IntegerField(
+        blank=True,
+        choices=[1,2,3,4],
+        widget=widgets.RadioSelect,
+    )
+
 class Player(BasePlayer):
     is_random = models.BooleanField(initial=False)
     temp_payoff = models.CurrencyField(initial=cu(0))
@@ -45,8 +52,18 @@ class Player(BasePlayer):
     outcome3 = models.IntegerField(initial=1)
     is_red = models.IntegerField(initial=1)
     is_red_str = models.StringField()
+    # quiz answer
+    quiz_1=make_field()
+    quiz_2=make_field()
+    quiz_3=make_field()
+    quiz_4=make_field()
+    quiz_5=make_field()
+    Pass = models.BooleanField(initial=False)
 
 # PAGES
+class Intro(Page):
+    pass
+
 class Instruction(Page):
     pass
 
@@ -114,8 +131,37 @@ class QSR(Page):
             player.is_red_str = "藍罐"
             player.temp_payoff = player.blue_payoff
 
+
+
+class Quiz(Page):
+    form_model = 'player'
+    form_fields = ['quiz_1', 'quiz_2', 'quiz_3', 'quiz_4', 'quiz_5']
+
+    @staticmethod
+    def error_message(player, values):
+        for q in ['quiz_1', 'quiz_2', 'quiz_3', 'quiz_4', 'quiz_5']:
+            if values[q] == None:
+                return 'Please answer all the questions'
+    def before_next_page(player, timeout_happened):
+        if player.quiz_1 == 3 and player.quiz_2 == 3 and player.quiz_3 == 3 and player.quiz_4 == 3 and player.quiz_5 == 3:
+            player.Pass = True
+    # 這裡寫答案！！！！！
+    
+class Quiz_result(Page):
+    @staticmethod
+    def app_after_this_page(player, upcoming_apps):
+        print(player.session.config['name'])
+        if player.session.config['name'] == "risk_QSR_whole_game":
+            if player.Pass == False:
+                participant= player.participant
+                participant.final_payoff = -1                
+                return upcoming_apps[1]
+
+    pass
+
 class Results(Page):
     pass
 
-
-page_sequence = [Instruction, Instruction2, Instruction3,Instruction_QSR,Instruction_QSR2,Instruction_QSR3,Instruction_QSR4, PracticeStart, Draw, QSR, Results]
+# page_sequence = [Intro, Instruction, Instruction2, Instruction3,Instruction_QSR,Instruction_QSR2,Instruction_QSR3,Instruction_QSR4, PracticeStart, Draw, QSR, Results]
+# page_sequence = [Intro, Instruction, Instruction2, Instruction3,Instruction_QSR,Instruction_QSR2,Instruction_QSR3,Instruction_QSR4, Quiz, Quiz_result, PracticeStart, Draw, QSR, Results]
+page_sequence = [ Quiz, Quiz_result, PracticeStart, Draw, QSR, Results]
