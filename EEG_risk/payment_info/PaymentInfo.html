@@ -3,8 +3,12 @@
 
     <p>
         感謝您參與本次的實驗。 <br>
-        您被抽中的是第 {{ participant.selected_round}} 輪的決策。
+        {{if participant.final_payoff  == -1}}
+        您實驗的總報酬為 0。
+        {{ else }}
+        您被抽中的是第 {{ participant.selected_round }} 輪的決策。
         您實驗的總報酬為 {{ participant.final_payoff }}。
+        {{ endif }}
     </p>
 
     {{ formfields }}

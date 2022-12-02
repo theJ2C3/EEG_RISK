@@ -29,6 +29,9 @@ class Player(BasePlayer):
 # FUNCTIONS
 # PAGES
 class PaymentInfo(Page):
+    # print(Player.participant["payoff"])
+    # if Player.participant["payoff"] >0:
+    # print(Player.participant["final_payoff"])
     pass
 
 
