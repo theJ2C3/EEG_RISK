@@ -1,0 +1,164 @@
+{{ block title }}
+練習回合(二)：頻率判斷
+{{ endblock }}
+
+{{ block content }}
+<p>請根據您看到抽球結果，在下列選擇表中選擇您認為紅罐最有可能的使用次數。</p>
+
+<input type="hidden" name="switching_point" id="id_switching_point">
+{{ formfield_errors 'switching_point' }}
+
+<table class="table table-striped">
+    <colgroup>
+        <col width="10%">
+        <col width="5%">
+    </colgroup>
+
+    <tr>
+        <td align="right">
+            <span style="font-size: 20px;"> 每100次同樣的抽球結果，您認為可能使用紅罐次數為 </span>
+        <td> </td>
+        <tr>
+    <tr>
+        <td align="middle">
+            <b> 0 次 </b>
+        <td align="middle">
+            <input type="radio"
+                   name="bdm"
+                   value="0"
+                   data-amount="0"
+        </td>
+
+        <tr>
+        <td align="middle">
+            <b> 10 次 </b>
+        <td align="middle">
+            <input type="radio"
+                   name="bdm"
+                   value="1"
+                   data-amount="10"
+
+        </td>
+
+        <tr>
+        <td align="middle">
+            <b> 20 次 </b>
+        <td align="middle">
+            <input type="radio"
+                   name="bdm"
+                   value="2"
+                   data-amount="20"
+
+        </td>
+
+        <tr>
+        <td align="middle">
+            <b> 30 次 </b>
+        <td align="middle">
+            <input type="radio"
+                   name="bdm"
+                   value="3"
+                   data-amount="30"
+        </td>
+
+        <tr>
+        <td align="middle">
+            <b> 40 次 </b>
+        <td align="middle">
+            <input type="radio"
+                   name="bdm"
+                   value="4"
+                   data-amount="40"
+        </td>
+
+        <tr>
+        <td align="middle">
+            <b> 50 次 </b>
+        <td align="middle">
+            <input type="radio"
+                   name="bdm"
+                   value="5"
+                   data-amount="50"
+        </td>
+
+        <tr>
+        <td align="middle">
+            <b> 60 次 </b>
+        <td align="middle">
+            <input type="radio"
+                   name="bdm"
+                   value="6"
+                   data-amount="60"
+        </td>
+
+        <tr>
+        <td align="middle">
+            <b> 70 次 </b>
+        <td align="middle">
+            <input type="radio"
+                   name="bdm"
+                   value="7"
+                   data-amount="70"
+        </td>
+
+        <tr>
+        <td align="middle">
+            <b> 80 次 </b>
+        <td align="middle">
+            <input type="radio"
+                   name="bdm"
+                   value="8"
+                   data-amount="80"
+        </td>
+
+        <tr>
+        <td align="middle">
+            <b> 90 次 </b>
+        <td align="middle">
+            <input type="radio"
+                   name="bdm"
+                   value="9"
+                   data-amount="90"
+        </td>
+
+        <tr>
+        <td align="middle">
+            <b> 100 次 </b>
+        <td align="middle">
+            <input type="radio"
+                   name="bdm"
+                   value="10"
+                   data-amount="100"
+        </td>
+
+</table>
+
+<button type="button" class="btn btn-primary" onclick="submitForm()">Next</button>
+
+<script>
+    let allRadios = document.querySelectorAll('input[type=radio]')
+    function submitForm() {
+        let form = document.getElementById('form');
+        if (form.reportValidity()) {
+            let switchingPoint = document.getElementById('id_switching_point');
+            let allChoicesAreOnLeft = true;
+            for (let radio of allRadios) {
+                if (radio.name === 'bdm' && radio.checked) {
+                    switchingPoint.value = radio.dataset.amount;
+                    allChoicesAreOnLeft = false;
+                    break;
+                }
+            }
+            if (allChoicesAreOnLeft) {
+                  // alert if no choice is made.
+                         alert(
+             '請做出您的選擇'
+                         );
+            }
+            form.submit();
+        }
+    }
+
+</script>
+
+{{ endblock }}

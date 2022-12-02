@@ -1,0 +1,16 @@
+{{ block title }}
+抽球階段
+{{ endblock }}
+
+{{ block content }}
+<p>本回合抽球結果如下</p>
+{{ for img_path in img_paths }}
+        <img src="{{ static img_path }}">
+{{ endfor }}
+
+{{ next_button }}
+
+{{ endblock }}
+
+
+

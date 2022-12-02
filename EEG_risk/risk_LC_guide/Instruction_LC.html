@@ -1,0 +1,17 @@
+{{ block title }}
+實驗說明(三)：決定抽獎方式
+{{ endblock }}
+
+{{ block content }}
+<p>在您看到抽球結果之後，電腦將從「資料庫」中，隨機抽出與您所看到的抽球結果一致的 100 筆資料。 </p>
+<p>請您判斷這 100 次當中，有多少次電腦是使用紅罐抽球。</p>
+<p>接下來您將面對兩種報酬決定方式：<span style="color: black;font-weight:bold"> 紅罐抽獎 </span> 與 <span style="color: black;font-weight:bold"> 隨機抽獎</span>。 </p>
+<p>您必須在選擇表（如圖）中的每一行，依照各情況採用您認為最有可能獲得報酬的抽獎方式。</p>
+<p>每個回合結束時，電腦會從您所選擇的結果中抽取其中一行，並執行你所選擇的抽獎方式，該抽獎結果將作為您本回合的報酬。</p>
+<p>
+    <br><img src="{{ static 'risk/LC4.png' }}" width="800px"/> </br></p>
+<p>以下將分別介紹兩種報酬決定方式。</p>
+
+{{ next_button }}
+
+{{ endblock }}

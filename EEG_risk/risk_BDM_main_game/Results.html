@@ -1,0 +1,28 @@
+{{ block title }}
+    抽獎結果
+{{ endblock }}
+
+{{ block content }}
+    <p>
+        {{ if player.is_random }}
+        <p>本回合您所看到的抽球結果是從{{ player.is_red_str }}抽出 </p>
+        <p>本回合您選擇的次數為 {{ player.switching_point }} 次 </p>
+        <p>本回合抽中的 N 為 {{ player.number }}  </p>
+        <p>因此採用隨機抽獎 </p>
+        <p>隨機抽獎抽出的 B 為 {{ player.lottery }} </p>
+        <p>本回合您的報酬為 {{ player.temp_payoff }} </p>
+
+        {{ else }}
+        <p>本回合您所看到的抽球結果是從{{ player.is_red_str }}抽出 </p>
+        <p>本回合您選擇的次數為 {{ player.switching_point }} 次 </p>
+        <p>本回合抽中的 N 為 {{ player.number }}  </p>
+        <p>因此採用為紅罐抽獎 </p>
+        <p>本回合您的報酬為 {{ player.temp_payoff }} </p>
+        {{ endif }}
+        </p>
+
+{{ next_button }}
+
+{{ endblock }}
+
+

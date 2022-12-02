@@ -1,0 +1,266 @@
+{{ block title }}
+練習回合(二)：頻率判斷
+{{ endblock }}
+
+{{ block content }}
+<p>請根據您看到抽球結果，在下列選擇表中選擇您認為紅罐最有可能的使用次數。</p>
+
+<input type="hidden" name="switching_point" id="id_switching_point">
+{{ formfield_errors 'switching_point' }}
+
+<table class="table table-striped">
+    <colgroup>
+        <col width="5%">
+        <col width="5%">
+        <col width="30%">
+        <col width="30%">
+        <col width="30%">
+    </colgroup>
+
+    <tr>
+        <td></td>
+        <td></td>
+        <td align="middle"><b>每100次同樣的抽球結果，您認為可能使用紅罐次數為</b></td>
+        <td align="middle"><b>紅罐抽球報酬</b></td>
+        <td align="middle"><b>藍罐抽球報酬</b></td>
+    </tr>
+    <tr>
+        <td align="middle">
+        </td>
+        <td align="middle">
+            <input type="radio"
+                   name="qsr"
+                   value="0"
+                   data-amount="0"
+        </td>
+        <td align="middle">
+            0
+        </td>
+        <td align="middle">
+            0
+        </td>
+        <td align="middle">
+            200
+        </td>
+    <tr>
+        <td align="middle">
+        </td>
+        <td align="middle">
+            <input type="radio"
+                   name="qsr"
+                   value="1"
+                   data-amount="10"
+        </td>
+        <td align="middle">
+            10
+        </td>
+        <td align="middle">
+            38
+        </td>
+        <td align="middle">
+            198
+        </td>
+    <tr>
+        <td align="middle">
+        </td>
+        <td align="middle">
+            <input type="radio"
+                   name="qsr"
+                   value="2"
+                   data-amount="20"
+        </td>
+        <td align="middle">
+            20
+        </td>
+        <td align="middle">
+            72
+        </td>
+        <td align="middle">
+            192
+        </td>
+
+       <tr>
+        <td align="middle">
+        </td>
+        <td align="middle">
+            <input type="radio"
+                   name="qsr"
+                   value="3"
+                   data-amount="30"
+        </td>
+        <td align="middle">
+            30
+        </td>
+        <td align="middle">
+            102
+        </td>
+        <td align="middle">
+            182
+        </td>
+
+           <tr>
+        <td align="middle">
+        </td>
+        <td align="middle">
+            <input type="radio"
+                   name="qsr"
+                   value="4"
+                   data-amount="40"
+        </td>
+        <td align="middle">
+            40
+        </td>
+        <td align="middle">
+            128
+        </td>
+        <td align="middle">
+            168
+        </td>
+
+           <tr>
+        <td align="middle">
+        </td>
+        <td align="middle">
+            <input type="radio"
+                   name="qsr"
+                   value="5"
+                   data-amount="50"
+        </td>
+        <td align="middle">
+            50
+        </td>
+        <td align="middle">
+            150
+        </td>
+        <td align="middle">
+            150
+        </td>
+
+           <tr>
+        <td align="middle">
+        </td>
+        <td align="middle">
+            <input type="radio"
+                   name="qsr"
+                   value="6"
+                   data-amount="60"
+        </td>
+        <td align="middle">
+            60
+        </td>
+        <td align="middle">
+            168
+        </td>
+        <td align="middle">
+            128
+        </td>
+
+       <tr>
+        <td align="middle">
+        </td>
+        <td align="middle">
+            <input type="radio"
+                   name="qsr"
+                   value="7"
+                   data-amount="70"
+        </td>
+        <td align="middle">
+            70
+        </td>
+        <td align="middle">
+            182
+        </td>
+        <td align="middle">
+            102
+        </td>
+       <tr>
+        <td align="middle">
+        </td>
+        <td align="middle">
+            <input type="radio"
+                   name="qsr"
+                   value="8"
+                   data-amount="80"
+        </td>
+        <td align="middle">
+            80
+        </td>
+        <td align="middle">
+            192
+        </td>
+        <td align="middle">
+            72
+        </td>
+
+           <tr>
+        <td align="middle">
+        </td>
+        <td align="middle">
+            <input type="radio"
+                   name="qsr"
+                   value="9"
+                   data-amount="90"
+        </td>
+        <td align="middle">
+            90
+        </td>
+        <td align="middle">
+            198
+        </td>
+        <td align="middle">
+            38
+        </td>
+
+           <tr>
+        <td align="middle">
+        </td>
+        <td align="middle">
+            <input type="radio"
+                   name="qsr"
+                   value="10"
+                   data-amount="100"
+        </td>
+        <td align="middle">
+            100
+        </td>
+        <td align="middle">
+            200
+        </td>
+        <td align="middle">
+            0
+        </td>
+
+
+
+</table>
+
+
+<button type="button" class="btn btn-primary" onclick="submitForm()">Next</button>
+
+<script>
+    let allRadios = document.querySelectorAll('input[type=radio]')
+    function submitForm() {
+        let form = document.getElementById('form');
+        if (form.reportValidity()) {
+            let switchingPoint = document.getElementById('id_switching_point');
+            let allChoicesAreOnLeft = true;
+            for (let radio of allRadios) {
+                if (radio.name === 'qsr' && radio.checked) {
+                    switchingPoint.value = radio.dataset.amount;
+                    allChoicesAreOnLeft = false;
+                    break;
+                }
+            }
+            if (allChoicesAreOnLeft) {
+                // alert if no choice is made.
+                         alert(
+             '請做出您的選擇'
+                         );
+            }
+            form.submit();
+        }
+    }
+
+</script>
+
+{{ endblock }}

@@ -1,0 +1,218 @@
+{{ block title }}
+決定抽獎方式
+{{ endblock }}
+
+{{ block content }}
+<p>請根據您看到抽球結果，在下列選擇表中的每一行採用您認為最有可能獲得報酬的抽獎方式。</p>
+<p>每個回合結束時，電腦會從您所選擇的結果中抽取其中一行，並執行你所選擇的抽獎方式，該抽獎結果將作為您本回合的報酬。</p>
+
+<input type="hidden" name="switching_point" id="id_switching_point">
+{{ formfield_errors 'switching_point' }}
+
+<table class="table table-striped">
+    <colgroup>
+        <col width="70%">
+        <col width="15%">
+        <col width="15%">
+    </colgroup>
+    <tr>
+        <td align="middle"><b>隨機抽獎中獎號碼</b></td>
+        <td align="right"><b>採用隨機抽獎</b></td>
+        <td align="left"><b>採用紅罐抽獎</b></td>
+    </tr>
+     <tr>
+        <td align="middle"><b>  </b>
+        <td align="right">
+            <input type="radio"
+                   disabled>&nbsp;&nbsp;
+        </td>
+        </td>
+        <td align="left"><input type="radio" checked/></td>
+    </tr>
+    <tr>
+        <td align="middle"><b> 1 </b>
+        <td align="right">
+            <input type="radio"
+                   value="left"
+                   name="1"
+                   data-amount="1"
+                   required>&nbsp;&nbsp;
+        </td>
+        </td>
+        <td align="left"><input type="radio" value="right" name="1"  required></td>
+    </tr>
+
+    <tr>
+        <td align="middle"><b> 1 , 2 </b>
+        <td align="right">
+            <input type="radio"
+                   value="left"
+                   name="2"
+                   data-amount="2"
+                   required>&nbsp;&nbsp;
+        </td>
+        </td>
+        <td align="left"><input type="radio" value="right" name="2"  required></td>
+    </tr>
+
+    <tr>
+        <td align="middle"><b> 1 , 2 , 3 </b>
+        <td align="right">
+            <input type="radio"
+                   value="left"
+                   name="3"
+                    data-amount="3"
+                   required>&nbsp;&nbsp;
+        </td>
+        </td>
+        <td align="left"><input type="radio" value="right" name="3"required></td>
+    </tr>
+
+    <tr>
+        <td align="middle"><b> 1 , 2 , 3 , 4 </b>
+        <td align="right">
+            <input type="radio"
+                   value="left"
+                   name="4"
+                   data-amount="4"
+                   required>&nbsp;&nbsp;
+        </td>
+        </td>
+        <td align="left"><input type="radio" value="right" name="4"  required></td>
+    </tr>
+
+    <tr>
+        <td align="middle"><b> 1 , 2 , 3 , 4 , 5 </b>
+        <td align="right">
+            <input type="radio"
+                   value="left"
+                   name="5"
+                   data-amount="5"
+                   required>&nbsp;&nbsp;
+        </td>
+        </td>
+        <td align="left"><input type="radio" value="right" name="5"  required></td>
+    </tr>
+
+    <tr>
+        <td align="middle"><b> 1 , 2 , 3 , 4 , 5 , 6 </b>
+        <td align="right">
+            <input type="radio"
+                   value="left"
+                   name="6"
+                   data-amount="6"
+                   required>&nbsp;&nbsp;
+        </td>
+        </td>
+        <td align="left"><input type="radio" value="right" name="6" required></td>
+    </tr>
+
+    <tr>
+        <td align="middle"><b> 1 , 2 , 3 , 4 , 5 , 6 , 7 </b>
+        <td align="right">
+            <input type="radio"
+                   value="left"
+                   name="7"
+                   data-amount="7"
+                   required>&nbsp;&nbsp;
+        </td>
+        </td>
+        <td align="left"><input type="radio" value="right" name="7"  required></td>
+    </tr>
+
+    <tr>
+        <td align="middle"><b> 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 </b>
+        <td align="right">
+            <input type="radio"
+                   value="left"
+                   name="8"
+                   data-amount="8"
+                   required>&nbsp;&nbsp;
+        </td>
+        </td>
+        <td align="left"><input type="radio" value="right" name="8" required></td>
+    </tr>
+
+    <tr>
+        <td align="middle"><b> 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 </b>
+        <td align="right">
+            <input type="radio"
+                   value="left"
+                   name="9"
+                   data-amount="9"
+                   required>&nbsp;&nbsp;
+        </td>
+        </td>
+        <td align="left"><input type="radio" value="right" name="9" required></td>
+    </tr>
+
+     <tr>
+        <td align="middle"><b> 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 10</b>
+        <td align="right">
+            <input type="radio"
+                   checked/>&nbsp;&nbsp;
+        </td>
+        </td>
+        <td align="left"><input type="radio" disabled></td>
+    </tr>
+</table>
+
+
+<button type="button" class="btn btn-primary" onclick="submitForm()">Next</button>
+
+
+{{ endblock }}
+
+
+{{ block scripts }}
+<script>
+    let allRadios = document.querySelectorAll('input[type=radio]')
+    function submitForm() {
+        let form = document.getElementById('form');
+        if (form.reportValidity()) {
+            let switchingPoint = document.getElementById('id_switching_point');
+
+            let allChoicesAreOnLeft = true;
+            for (let radio of allRadios) {
+                if (radio.value === 'left' && radio.checked) {
+                    switchingPoint.value = radio.dataset.amount;
+                    allChoicesAreOnLeft = false;
+                    break;
+                }
+            }
+            if (allChoicesAreOnLeft) {
+                // '10' represents the valueInput if the user didn't click the right side for any choice
+                switchingPoint.value = '10';
+            }
+            form.submit();
+        }
+    }
+
+    // Automation for switching point formation (click left radio and all bottom radio turn left. Vice versa)
+    function onRadioClick(evt) {
+        let clickedRadio = evt.target;
+        let afterClickedRadio = false;
+        let clickedRightRadio = clickedRadio.value === 'left';
+
+        for (let aRadio of allRadios) {
+            if (aRadio === clickedRadio) {
+                afterClickedRadio = true;
+                continue;
+            }
+            if (clickedRightRadio && afterClickedRadio && aRadio.value === 'left') {
+                aRadio.checked = true;
+            }
+            if (!clickedRightRadio && !afterClickedRadio && aRadio.value === 'right') {
+                aRadio.checked = true;
+            }
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function (event) {
+        for (let radio of document.querySelectorAll('input[type=radio]')) {
+            radio.onchange = onRadioClick;
+        }
+    });
+
+</script>
+{{ endblock }}
