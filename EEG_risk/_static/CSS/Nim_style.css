@@ -1,0 +1,54 @@
+.card {
+    background-color: lightyellow;
+}
+p{
+    font-size: 18px;
+}
+
+th {
+    /* padding: 0 50px; */
+    padding-bottom: 30px;
+    padding-right: 30px;
+    font-size: 18px;
+}
+td {
+    /* padding: 0 50px; */
+    padding-right: 30px;
+}
+
+.dot {
+    /* line-height:25px; */
+    height: 25px;
+    width: 25px;
+    background-color: gray;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 3pt;
+}
+
+.green_dot {
+    /* line-height:25px; */
+    height: 25px;
+    width: 25px;
+    background-color: lightblue;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 3pt;
+}
+
+.arrow {
+    line-height:25px;
+    border: solid red;
+    border-width: 0 5px 5px 0;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 5px;
+    margin: 5pt;
+}
+
+.left {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+}

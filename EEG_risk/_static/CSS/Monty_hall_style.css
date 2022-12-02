@@ -1,0 +1,123 @@
+p{
+    font-size: 18px;
+}
+.card {
+    background-color: lightyellow;
+}
+
+#next{
+    margin: 15px;
+}
+
+#door_series{
+    width:720px;
+}
+
+.answer{
+    background-image: url("../car.png");
+    /* Use this when using internal css */
+    /* background-image: url("{{ static 'car.png' }}"); */
+    background-size: 80%;
+    background-color: gray;
+    background-repeat: no-repeat;
+    background-position: 50% 75%;
+    position: relative;
+    width:60px;
+    height:60px;
+
+    margin-left: 6px;
+    margin-right: 6px;
+    margin-top:2px;
+    margin-bottom: 2px;
+    display: inline-grid;
+}
+
+.door_bg{
+    background-image: url("../goat.png");
+    background-size: 80%;
+    background-color: gray;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    width:60px;
+    height:60px;
+
+    margin-left: 6px;
+    margin-right: 6px;
+    margin-top:2px;
+    margin-bottom: 2px;
+    display: inline-grid;
+}
+
+.door{
+    background-color: orange;
+    /* border: solid 5px orange; */
+    position: absolute;
+    top:0px;
+    left:0px;
+    width:60px;
+    height:60px;
+    overflow-x: hidden;
+    cursor: pointer;
+    display: inline-grid;
+    transform-origin: left;
+    /*Speed of the Door animation*/
+}
+
+.transparent_door{
+    background-color: transparent;
+    border: solid 5px orange;
+    position: absolute;
+    top:0px;
+    left:0px;
+    width:60px;
+    height:60px;
+    overflow-x: hidden;
+    cursor: pointer;
+    display: inline-grid;
+    transform-origin: left;
+    /*Speed of the Door animation*/
+}
+
+.door:hover {
+    background-color:#8179cf;
+}
+
+.doorOpen{
+    /*prespectiv creates the door open effect*/
+    transform: perspective(1200px) translateZ(0px) translateX(0px) translateY(0px) rotateY(-95deg);
+}
+
+.checkmark{
+    background-image: url("../checkmark.png");
+    background-size: contain;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    width:60px;
+    height:60px;
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:auto;
+    margin-bottom: auto;
+    display: inline-grid;
+}
+
+.hollow_checkmark{
+    background-image: url("../hollow_checkmark.png");
+    background-size: contain;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    width:60px;
+    height:60px;
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:auto;
+    margin-bottom: auto;
+    display: inline-grid;
+}
