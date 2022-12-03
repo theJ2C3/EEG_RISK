@@ -163,5 +163,5 @@ class Results(Page):
     pass
 
 # page_sequence = [Intro, Instruction, Instruction2, Instruction3,Instruction_QSR,Instruction_QSR2,Instruction_QSR3,Instruction_QSR4, PracticeStart, Draw, QSR, Results]
-# page_sequence = [Intro, Instruction, Instruction2, Instruction3,Instruction_QSR,Instruction_QSR2,Instruction_QSR3,Instruction_QSR4, Quiz, Quiz_result, PracticeStart, Draw, QSR, Results]
-page_sequence = [ Quiz, Quiz_result, PracticeStart, Draw, QSR, Results]
+page_sequence = [Intro, Instruction, Instruction2, Instruction3,Instruction_QSR,Instruction_QSR2,Instruction_QSR3,Instruction_QSR4, Quiz, Quiz_result, PracticeStart, Draw, QSR, Results]
+# page_sequence = [ Quiz, Quiz_result, PracticeStart, Draw, QSR, Results]
