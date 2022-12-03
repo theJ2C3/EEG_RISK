@@ -13,8 +13,8 @@ This app enforces a single switching point
 class C(BaseConstants):
     NAME_IN_URL = 'risk_BDM_main_game'
     PLAYERS_PER_GROUP = None
-    NUM_ROUNDS = 5
-    # NUM_ROUNDS = 42
+    # NUM_ROUNDS = 5
+    NUM_ROUNDS = 63
     win_payoff = cu(10)
     import csv
     with open('outcome.csv', 'r') as draw:
@@ -116,15 +116,25 @@ class BDM(Page):
 class Results(Page):
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
+        # draw one round as final payoff
         import random
         participant = player.participant
 
         # if it's the last round
-        if player.round_number == C.NUM_ROUNDS:
-            random_round = random.randint(1, C.NUM_ROUNDS)
+        # if player.round_number == C.NUM_ROUNDS:
+        #     random_round = random.randint(1, C.NUM_ROUNDS)
+        if player.round_number == player.session.config["num_of_round"]:
+            random_round = random.randint(1, player.session.config["num_of_round"])
             participant.selected_round = random_round
             player_in_selected_round = player.in_round(random_round)
-            participant.final_payoff = player_in_selected_round.temp_payoff
-
+            participant.final_payoff  = player_in_selected_round.temp_payoff
+            
+    def app_after_this_page(player, upcoming_apps):
+        # print(player.session.config["app_sequence"][2])
+        # print(player.session.config["num_of_round"])
+        if player.round_number == player.session.config["num_of_round"]:             
+            # 假如回合數已經到達變跳到最後一頁
+            return upcoming_apps[0]
+            # https://www.otreehub.com/forum/193/
 
 page_sequence = [Instruction, Draw, BDM, Results]

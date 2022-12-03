@@ -162,8 +162,8 @@ class Quiz_result(Page):
                 participant= player.participant
                 participant.final_payoff = -1
                 return upcoming_apps[1]
-
     pass
+
 class Results(Page):
     pass
 

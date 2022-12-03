@@ -15,6 +15,7 @@ class C(BaseConstants):
     NUM_ROUNDS = 1
     win_payoff = cu(10)
 
+
     # import drawing dataset
     import csv
     with open('outcome.csv', 'r') as draw:
@@ -160,17 +161,32 @@ class Quiz(Page):
         if player.quiz_1 == 3 and player.quiz_2 == 3 and player.quiz_3 == 3 and player.quiz_4 == 3 and player.quiz_5 == 3:
             player.Pass = True
     # 這裡寫答案！！！！！
-    
+
+# class Quiz(Page):
+######################## 測試用##########################
+#     form_model = 'player'
+#     form_fields = ['quiz_1', 'quiz_2', 'quiz_3', 'quiz_4', 'quiz_5']
+
+#     @staticmethod
+#     # def error_message(player, values):
+#     #     for q in ['quiz_1', 'quiz_2', 'quiz_3', 'quiz_4', 'quiz_5']:
+#     #         if values[q] == None:
+#     #             return 'Please answer all the questions'
+#     def before_next_page(player, timeout_happened):
+#         if player.quiz_1 == 3:
+#             player.Pass = True
+#     # 這裡寫答案！！！！！
+
 class Quiz_result(Page):
     @staticmethod
     def app_after_this_page(player, upcoming_apps):
-        # print(player.session.config['name'])
+        print(player.session.config["app_sequence"][1])
+        print(player.session.config["num_of_round"])
         if player.session.config['name'] == "risk_LC_whole_game":
             if player.Pass == False:
                 participant= player.participant
                 participant.final_payoff = -1                
                 return upcoming_apps[1]
-
     pass
 
 class Results(Page):
@@ -179,5 +195,6 @@ class Results(Page):
 
 # page_sequence = [Intro, Instruction, Instruction2, Instruction3, Instruction_LC, Instruction_LC2, Instruction_LC3, Instruction_LC4,Instruction_LC5, Instruction_LC6, PracticeStart, Draw, LC , Results]
 page_sequence = [Intro, Instruction, Instruction2, Instruction3, Instruction_LC, Instruction_LC2, Instruction_LC3, Instruction_LC4,Instruction_LC5, Instruction_LC6, Quiz, Quiz_result, PracticeStart, Draw, LC , Results]
+# page_sequence = [Instruction3, Quiz, Quiz_result, PracticeStart]
 # page_sequence = [Instruction3, Draw, LC , Results]
 
