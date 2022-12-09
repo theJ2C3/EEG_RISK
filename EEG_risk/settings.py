@@ -1,7 +1,7 @@
 from os import environ
 
-setnum=42
-
+# roundnumfixed = 42
+roundnumfixed = 3
 
 SESSION_CONFIGS = [
     dict(
@@ -9,63 +9,63 @@ SESSION_CONFIGS = [
         display_name="risk_LC_guide",
         app_sequence=['risk_LC_guide'],
         num_demo_participants=3,
-        num_of_round = setnum,
+        num_of_round = roundnumfixed,
     ),
     dict(
         name='risk_BDM_guide',
         display_name="risk_BDM_guide",
         app_sequence=['risk_BDM_guide'],
         num_demo_participants=3,
-        num_of_round = setnum,
+        num_of_round = roundnumfixed,
     ),
     dict(
         name='risk_QSR_guide',
         display_name="risk_QSR_guide",
         app_sequence=['risk_QSR_guide'],
         num_demo_participants=3,
-        num_of_round = setnum,
+        num_of_round = roundnumfixed,
     ),
     dict(
         name='risk_LC_main_game',
         display_name="risk_LC_main_game",
         app_sequence=['risk_LC_main_game'],
         num_demo_participants=3,
-        num_of_round = setnum,
+        num_of_round = roundnumfixed,
     ),
     dict(
         name='risk_BDM_main_game',
         display_name="risk_BDM_main_game",
         app_sequence=['risk_BDM_main_game'],
         num_demo_participants=3,
-        num_of_round = setnum,
+        num_of_round = roundnumfixed,
     ),
     dict(
         name='risk_QSR_main_game',
         display_name="risk_QSR_main_game",
         app_sequence=['risk_QSR_main_game'],
         num_demo_participants=3,
-        num_of_round = setnum,
+        num_of_round = roundnumfixed,
     ),
     dict(
         name='risk_LC_whole_game',
         display_name="risk_LC_whole_game",
         app_sequence=['risk_LC_guide', 'risk_LC_main_game', 'payment_info'],
         num_demo_participants=3,
-        num_of_round = setnum,
+        num_of_round = roundnumfixed,
     ),
     dict(
         name='risk_BDM_whole_game',
         display_name="risk_BDM_whole_game",
         app_sequence=['risk_BDM_guide', 'risk_BDM_main_game', 'payment_info'],
         num_demo_participants=3,
-        num_of_round = setnum,
+        num_of_round = roundnumfixed,
     ),
     dict(
         name='risk_QSR_whole_game',
         display_name="risk_QSR_whole_game",
         app_sequence=['risk_QSR_guide', 'risk_QSR_main_game', 'payment_info'],
         num_demo_participants=3,
-        num_of_round = setnum,
+        num_of_round = roundnumfixed,
     ),
 ]
 
